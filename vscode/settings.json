@@ -1,0 +1,30 @@
+{
+  "editor.minimap.enabled": false,
+  "editor.formatOnSave": true,
+  "explorer.confirmDelete": false,
+  "editor.scrollbar.vertical": "hidden",
+  "explorer.confirmDragAndDrop": false,
+  "search.exclude": {
+    "**/node_modules": true
+  },
+  "editor.bracketPairColorization.enabled": true,
+  "editor.fontFamily": "JetBrains Mono",
+  "editor.formatOnPaste": true,
+  "javascript.updateImportsOnFileMove.enabled": "always",
+  "files.trimTrailingWhitespace": true,
+  "editor.rulers": [
+    120
+  ],
+  "terminal.external.windowsExec": "C:\\Tools\\Alacritty.exe",
+  "typescript.updateImportsOnFileMove.enabled": "always",
+  "workbench.colorTheme": "Gruvbox Dark Hard",
+  "workbench.enableExperiments": false,
+  "workbench.activityBar.visible": false,
+  "workbench.startupEditor": "none",
+  "vim.statusBarColorControl": true,
+  "workbench.colorCustomizations": {
+    "statusBar.background": "#5f00af",
+    "statusBar.noFolderBackground": "#5f00af",
+    "statusBar.debuggingBackground": "#5f00af"
+  },
+}

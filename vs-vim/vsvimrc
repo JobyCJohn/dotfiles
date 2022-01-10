@@ -1,0 +1,43 @@
+set clipboard=unnamed,unnamedplus
+set hlsearch
+set ignorecase
+set incsearch
+set smartcase
+set nu rnu
+
+" moving line above/below
+map <A-j> :vsc Edit.MoveSelectedLinesDown<CR>
+map <A-k> :vsc Edit.MoveSelectedLinesUp<CR>
+
+" yank to the end of line
+nnoremap Y yg$
+
+" join without changing the cursor position
+nnoremap J mzJ`z
+
+" next search navigation without changing the cursor position
+nnoremap n nzzzv
+nnoremap N Nzzzv
+
+" mapping space as leader
+let mapleader = " "
+
+" clear highlights
+nnoremap <C-l> :nohlsearch<CR>
+
+" add a line break after/before current line
+nnoremap ]<Space> o<ESC>
+nnoremap [<Space> O<ESC>
+
+" code navigation
+map <Leader>t :vsc Edit.GoToFile<CR>
+map <C-i> :vsc View.NavigateBackward<CR>
+map <C-o> :vsc View.NavigateForward<CR>
+"map <F2> :vsc ReSharper.ReSharper_Rename<CR>
+map <Leader>f :vsc Edit.Find<CR>
+map <Leader>g; :vsc Edit.GoToLastEditLocation<CR>
+map <Leader>gb :vsc Edit.GotoBase<CR>
+map <Leader>gd :vsc Edit.GoToDefinition<CR>
+map <Leader>gi :vsc Edit.GoToImplementation<CR>
+map <Leader>gr :vsc Edit.FindAllReferences<CR>
+map <Leader>rn :vsc Refactor.Rename<CR>

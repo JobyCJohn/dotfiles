@@ -1,0 +1,44 @@
+[user]
+	name = Joby John
+	email = 11912680+JobyCJohn@users.noreply.github.com
+[core]
+    editor = nvim
+	autocrlf = false
+[pull]
+	# Apply local commits after remote on pull
+	rebase = true
+
+[diff]
+	tool = nvim
+[difftool "nvim"]
+    cmd = nvim -f -d \"$LOCAL\" \"$REMOTE\"
+    trustExitCode = true
+[difftool]
+    prompt = false
+	keepBackup = false
+
+[merge]
+	tool = nvim
+[mergetool "nvim"]
+    cmd = nvim -f -d -c \"Gvdiffsplit!\" \"$MERGED\"
+    keepBackup = false
+    trustExitCode = true
+[mergetool "nvim"]
+	cmd = \"C:\\VS2017\\Common7\\IDE\\CommonExtensions\\Microsoft\\TeamFoundation\\Team Explorer\\vsdiffmerge.exe\" \"$REMOTE\" \"$LOCAL\" \"$BASE\" \"$MERGED\" //m
+	keepBackup = false
+	trustExitCode = true
+[mergetool]
+	prompt = true
+	keepBackup = false
+
+[alias]
+	d = diff
+[filter "lfs"]
+	clean = git-lfs clean -- %f
+	smudge = git-lfs smudge -- %f
+	process = git-lfs filter-process
+	required = true
+[credential]
+	helper = manager-core
+[gui]
+	recentrepo = D:/Source/github/dotfiles
