@@ -18,27 +18,26 @@
 	keepBackup = false
 
 [merge]
-	tool = nvim
+    tool = nvim
 [mergetool "nvim"]
-    cmd = nvim -f -d -c \"Gvdiffsplit!\" \"$MERGED\"
-    keepBackup = false
+    cmd = nvim -f -c \"Gvdiffsplit!\" \"$MERGED\"
     trustExitCode = true
-[mergetool "nvim"]
-	cmd = \"C:\\VS2017\\Common7\\IDE\\CommonExtensions\\Microsoft\\TeamFoundation\\Team Explorer\\vsdiffmerge.exe\" \"$REMOTE\" \"$LOCAL\" \"$BASE\" \"$MERGED\" //m
-	keepBackup = false
-	trustExitCode = true
 [mergetool]
-	prompt = true
+    prompt = false
 	keepBackup = false
 
 [alias]
-	d = diff
+    d = diff
+
+    st = status -s -b
+    br = branch -a -v
+
+    cm = commit -m
+    co = checkout
+    cb = checkout -b
+
 [filter "lfs"]
 	clean = git-lfs clean -- %f
 	smudge = git-lfs smudge -- %f
 	process = git-lfs filter-process
 	required = true
-[credential]
-	helper = manager-core
-[gui]
-	recentrepo = D:/Source/github/dotfiles
