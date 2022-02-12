@@ -10,7 +10,7 @@ map <A-j> :vsc Edit.MoveSelectedLinesDown<CR>
 map <A-k> :vsc Edit.MoveSelectedLinesUp<CR>
 
 " yank to the end of line
-nnoremap Y yg$
+nnoremap Y y$
 
 " join without changing the cursor position
 nnoremap J mzJ`z
