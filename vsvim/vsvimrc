@@ -5,10 +5,6 @@ set incsearch
 set smartcase
 set nu rnu
 
-" moving line above/below
-map <A-j> :vsc Edit.MoveSelectedLinesDown<CR>
-map <A-k> :vsc Edit.MoveSelectedLinesUp<CR>
-
 " yank to the end of line
 nnoremap Y y$
 
@@ -19,15 +15,28 @@ nnoremap J mzJ`z
 nnoremap n nzzzv
 nnoremap N Nzzzv
 
-" mapping space as leader
-let mapleader = " "
+" break undo sequence at punctuation marks
+inoremap , ,<C-g>u
+inoremap . .<C-g>u
+
+" prevent x and del key overriding what's in the clipboard
+nnoremap x "_x
+nnoremap X "_x
+nnoremap <Del> "_x
 
 " clear highlights
-nnoremap <C-l> :nohlsearch<CR>
+nnoremap <C-l> :nohls<CR>
 
 " add a line break after/before current line
 nnoremap ]<Space> o<ESC>
 nnoremap [<Space> O<ESC>
+
+" moving line above/below
+map <A-j> :vsc Edit.MoveSelectedLinesDown<CR>
+map <A-k> :vsc Edit.MoveSelectedLinesUp<CR>
+
+" mapping space as leader
+let mapleader = " "
 
 " code navigation
 map <Leader>t :vsc Edit.GoToFile<CR>

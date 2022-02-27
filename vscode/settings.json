@@ -24,6 +24,27 @@
     "workbench.startupEditor": "none",
     "vim.smartRelativeLine": true,
     "vim.useSystemClipboard": true,
+    "vim.hlsearch": true,
+    "vim.leader": "<space>",
+    "vim.normalModeKeyBindingsNonRecursive": [
+        {
+            "before": [
+                "<C-l>"
+            ],
+            "commands": [
+                ":nohl"
+            ]
+        },
+        {
+            "before": [
+                "<leader>",
+                "e"
+            ],
+            "commands": [
+                "workbench.action.toggleSidebarVisibility"
+            ]
+        },
+    ],
     "terminal.integrated.defaultProfile.windows": "Windows PowerShell",
     "terminal.integrated.profiles.windows": {
         "Windows PowerShell": {
