@@ -1,60 +1,95 @@
 {
-    "editor.minimap.enabled": false,
-    "explorer.confirmDelete": false,
-    "editor.scrollbar.vertical": "hidden",
-    "explorer.confirmDragAndDrop": false,
-    "search.exclude": {
-        "**/node_modules": true,
-    },
     "editor.bracketPairColorization.enabled": true,
-    "editor.formatOnPaste": true,
-    "editor.rulers": [
-        120
-    ],
     "editor.cursorBlinking": "solid",
-    "editor.renderLineHighlight": "none",
-    "editor.occurrencesHighlight": false,
+    "editor.formatOnPaste": true,
     "editor.guides.highlightActiveIndentation": false,
     "editor.largeFileOptimizations": false,
+    "editor.minimap.enabled": false,
+    "editor.occurrencesHighlight": false,
+    "editor.renderLineHighlight": "none",
+    "editor.rulers": [ 120 ],
+    "editor.scrollbar.vertical": "hidden",
+
+    "explorer.confirmDelete": false,
+    "explorer.confirmDragAndDrop": false,
+
     "files.trimTrailingWhitespace": true,
-    "javascript.updateImportsOnFileMove.enabled": "always",
-    "typescript.updateImportsOnFileMove.enabled": "always",
-    "workbench.colorTheme": "Gruvbox Dark Medium",
-    "workbench.activityBar.visible": false,
-    "workbench.startupEditor": "none",
+
+    "git.autofetch": true,
+    "git.defaultCloneDirectory": "C:\\Views\\",
+
+    "search.exclude": {
+        "**/node_modules": true
+    },
+
+    "terminal.integrated.defaultProfile.windows": "PowerShell",
+    "terminal.integrated.profiles.windows": {
+        "PowerShell": {
+            "path": "C:\\Tools\\PowerShell\\pwsh.exe",
+            "args": [ "-nologo" ]
+        }
+    },
+    "terminal.integrated.cursorStyle": "line",
+    "terminal.integrated.enablePersistentSessions": false,
+    "terminal.integrated.fontFamily": "JetBrainsMono NF",
+    "terminal.integrated.fontSize": 12,
+
+    "telemetry.telemetryLevel": "off",
+
     "vim.smartRelativeLine": true,
     "vim.useSystemClipboard": true,
     "vim.hlsearch": true,
     "vim.leader": "<space>",
     "vim.normalModeKeyBindingsNonRecursive": [
         {
-            "before": [
-                "<C-l>"
-            ],
-            "commands": [
-                ":nohl"
-            ]
+            "before": [ "<C-l>" ],
+            "commands": [ ":nohl" ]
         },
         {
-            "before": [
-                "<leader>",
-                "e"
-            ],
-            "commands": [
-                "workbench.action.toggleSidebarVisibility"
-            ]
+            "before": [ "]", "<space>" ],
+            "commands": [ "extension.addNewLineAfterSelection" ]
+        },
+        {
+            "before": [ "[", "<space>" ],
+            "commands": [ "extension.addNewLineBeforeSelection" ]
+        },
+        {
+            "before": [ "<leader>", "e" ],
+            "commands": [ "workbench.action.toggleSidebarVisibility" ]
+        },
+        {
+            "before": [ "<leader>", "f" ],
+            "commands": [ "actions.find" ]
+        },
+        {
+            "before": [ "<leader>", "p" ],
+            "commands": [ "workbench.action.quickOpen" ]
+        },
+        {
+            "before": [ "<leader>", "t" ],
+            "commands": [ "workbench.action.showAllSymbols" ]
+        },
+        {
+            "before": [ "<leader>", "g", ";" ],
+            "commands": [ "workbench.action.navigateToLastEditLocation" ]
+        },
+        {
+            "before": [ "<leader>", "g", "d" ],
+            "commands": [ "editor.action.revealdefinition" ]
+        },
+        {
+            "before": [ "<leader>", "g", "i" ],
+            "commands": [ "editor.action.goToImplementation" ]
+        },
+        {
+            "before": [ "<leader>", "g", "r" ],
+            "commands": [ "editor.action.findAllFileReferences" ]
         },
     ],
-    "terminal.integrated.defaultProfile.windows": "Windows PowerShell",
-    "terminal.integrated.profiles.windows": {
-        "Windows PowerShell": {
-            "path": "C:\\Tools\\PowerShell\\pwsh.exe",
-            "args": [
-                "-nologo"
-            ]
-        }
-    },
-    "terminal.integrated.fontFamily": "JetBrainsMono NF",
-    "terminal.integrated.fontSize": 13,
-    "terminal.integrated.enablePersistentSessions": false,
+
+    "workbench.colorTheme": "Gruvbox Dark Dark",
+    "workbench.activityBar.visible": false,
+    "workbench.startupEditor": "none",
+    "workbench.enableExperiments": false,
+    "workbench.settings.enableNaturalLanguageSearch": false,
 }

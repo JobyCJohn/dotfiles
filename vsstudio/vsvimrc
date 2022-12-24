@@ -1,0 +1,55 @@
+set clipboard=unnamed,unnamedplus
+set hlsearch
+set ignorecase
+set incsearch
+set smartcase
+set nu rnu
+
+" yank to the end of line
+nnoremap Y y$
+
+" join without changing the cursor position
+nnoremap J mzJ`z
+
+" next search navigation without changing the cursor position
+nnoremap n nzzzv
+nnoremap N Nzzzv
+
+" break undo sequence at punctuation marks
+inoremap , ,<C-g>u
+inoremap . .<C-g>u
+
+" prevent x and del key overriding what's in the clipboard
+nnoremap x "_x
+nnoremap X "_x
+nnoremap <Del> "_x
+
+" clear highlights
+nnoremap <C-l> :nohl<CR>
+
+" add a line break after/before current line
+nnoremap <silent>]<Space> m`o<Esc>``
+nnoremap <silent>[<Space> m`O<Esc>``
+
+" moving line above/below
+map <A-j> :vsc Edit.MoveSelectedLinesDown<CR>
+map <A-k> :vsc Edit.MoveSelectedLinesUp<CR>
+
+" code navigation
+map gcc :vsc Edit.ToggleLineComment<CR>
+map <C-i> :vsc View.NavigateBackward<CR>
+map <C-o> :vsc View.NavigateForward<CR>
+map ]e :vsc View.NextError<CR>
+map [e :vsc View.PreviousError<CR>
+map <C-r> :vsc Redo<CR>
+
+let mapleader = " "
+map <Leader>f  :vsc Edit.Find<CR>
+map <Leader>p  :vsc Edit.GotoFile<CR>
+map <Leader>t  :vsc Edit.GoToType<CR>
+map <Leader>cf :vsc Edit.FormatDocument<CR>
+map <Leader>g; :vsc Edit.GoToLastEditLocation<CR>
+map <Leader>gd :vsc Edit.GoToDefinition<CR>
+map <Leader>gi :vsc Edit.GoToImplementation<CR>
+map <Leader>gr :vsc Edit.FindAllReferences<CR>
+map <Leader>rn :vsc Refactor.Rename<CR>

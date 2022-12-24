@@ -1,10 +1,6 @@
 // Place your key bindings in this file to override the defaults
 [
     {
-        "key": "ctrl+alt+v",
-        "command": "toggleVim"
-    },
-    {
         "key": "alt+j",
         "command": "editor.action.moveLinesDownAction",
         "when": "editorTextFocus && !editorReadonly"
@@ -28,5 +24,45 @@
         "key": "shift+k",
         "command": "editor.action.showHover",
         "when": "editorTextFocus"
+    },
+    {
+        "key": "] e",
+        "command": "editor.action.marker.nextInFiles",
+        "when": "inputFocus && vim.mode == 'Normal'"
+    },
+    {
+        "key": "f8",
+        "command": "-editor.action.marker.nextInFiles",
+        "when": "editorFocus"
+    },
+    {
+        "key": "[ e",
+        "command": "editor.action.marker.prevInFiles",
+        "when": "inputFocus && vim.mode == 'Normal'"
+    },
+    {
+        "key": "shift+f8",
+        "command": "-editor.action.marker.prevInFiles",
+        "when": "editorFocus"
+    },
+    {
+        "key": "ctrl+o",
+        "command": "workbench.action.navigateForward",
+        "when": "canNavigateForward"
+    },
+    {
+        "key": "alt+right",
+        "command": "-workbench.action.navigateForward",
+        "when": "canNavigateForward"
+    },
+    {
+        "key": "ctrl+i",
+        "command": "workbench.action.navigateBack",
+        "when": "canNavigateBack"
+    },
+    {
+        "key": "alt+left",
+        "command": "-workbench.action.navigateBack",
+        "when": "canNavigateBack"
     }
 ]
