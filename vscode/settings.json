@@ -1,0 +1,74 @@
+{
+    "breadcrumbs.enabled": false,
+
+    "editor.fontFamily": "MesloLGL Nerd Font",
+    "editor.fontSize": 12,
+    "editor.fontLigatures": true,
+    "editor.largeFileOptimizations": false,
+    "editor.minimap.enabled": false,
+    "editor.occurrencesHighlight": "off",
+    "editor.renderControlCharacters": false,
+    "editor.renderLineHighlight": "none",
+    "editor.renderWhitespace": "none",
+    "editor.rulers": [ 120 ],
+    "editor.scrollbar.vertical": "hidden",
+
+    "files.associations": {
+      "*.cs": "csharp"
+    },
+
+    "git.openRepositoryInParentFolders": "always",
+    "git.confirmSync": false,
+
+    "hediet.vscode-drawio.theme": "Kennedy",
+    
+    "terminal.integrated.defaultProfile.windows": "PowerShell",
+    "terminal.integrated.fontSize": 12,
+    "terminal.integrated.fontFamily": "MesloLGL Nerd Font",
+
+    "telemetry.telemetryLevel": "off",
+
+    "vim.hlsearch": true,
+    "vim.incsearch": true,
+    "vim.leader": "<Space>",
+    "vim.smartRelativeLine": true,
+    "vim.useCtrlKeys": true,
+    "vim.handleKeys": {
+        "<C-f>": false,
+        "<C-p>": false,
+        "<C-s>": false,
+        "<C-t>": false,
+    },
+    "vim.useSystemClipboard": true,
+    "vim.normalModeKeyBindingsNonRecursive": [
+        { "before": [ "<C-l>" ], "commands": [ ":nohl" ] },
+        // splits
+        { "before": ["leader", "v"], "commands": [":vsplit"] },
+        { "before": ["leader", "s"], "commands": [":split"] },
+        // coding
+        { "before": ["g", "h"], "commands": ["editor.action.showDefinitionPreviewHover"] },
+        { "before": ["g", "i"], "commands": ["editor.action.goToImplementation"] },
+        { "before": ["g", "p", "d"], "commands": ["editor.action.peekDefinition"] },
+        { "before": ["g", "p", "i"], "commands": ["editor.action.peekImplementation"] },
+        { "before": ["g", "p", "t"], "commands": ["editor.action.peekTypeDefinition"] },
+        { "before": ["g", "q"], "commands": ["editor.action.quickFix"] },
+        { "before": ["g", "r"], "commands": ["editor.action.goToReferences"] },
+        { "before": ["g", "t"], "commands": ["editor.action.goToTypeDefinition"] },
+    ],
+    "vim.visualModeKeyBindings": [
+        // stay in visual mode while indenting
+        { "before": ["<"], "commands": ["editor.action.outdentLines"] },
+        { "before": [">"], "commands": ["editor.action.indentLines"] },
+    ],
+
+
+    "window.commandCenter": false,
+    "window.menuBarVisibility": "compact",
+    "window.restoreWindows": "none",
+
+    "workbench.activityBar.location": "hidden",
+    "workbench.colorTheme": "One Dark Pro Darker",
+    "workbench.editor.enablePreview": false,
+    "workbench.layoutControl.enabled": false,
+    "workbench.startupEditor": "none",
+}

@@ -1,0 +1,46 @@
+[user]
+	name = Joby John
+	email = 11912680+JobyCJohn@users.noreply.github.com
+[core]
+    editor = nvim
+	autocrlf = false
+[pull]
+	# Apply local commits after remote on pull
+	rebase = true
+
+[diff]
+	tool = nvim
+[difftool "nvim"]
+    cmd = nvim -f -d \"$LOCAL\" \"$REMOTE\"
+    trustExitCode = true
+[difftool]
+    prompt = false
+	keepBackup = false
+
+[merge]
+    tool = nvim
+[mergetool "nvim"]
+    cmd = nvim -f -c \"Gvdiffsplit!\" \"$MERGED\"
+    trustExitCode = true
+[mergetool]
+    prompt = false
+	keepBackup = false
+
+[alias]
+    d = diff
+
+    st = status -s -b
+    br = branch -a -v
+
+    cm = commit -m
+    co = checkout
+    cb = checkout -b
+
+[filter "lfs"]
+	clean = git-lfs clean -- %f
+	smudge = git-lfs smudge -- %f
+	process = git-lfs filter-process
+	required = true
+
+; [url "git://github.com/"]
+;     insteadOf = https://github.com/

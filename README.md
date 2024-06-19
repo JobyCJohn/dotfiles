@@ -1,2 +1,2 @@
-# dotfiles
-System tools dot files
+# UI
+![alacritty-tmux-neovim](./docs/alacritty-tmux-neovim.png)

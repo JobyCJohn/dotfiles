@@ -1,0 +1,62 @@
+[
+    // vi-bindings for sidebar
+    {   "keys": ["ctrl+shift+b"], 
+        "command": "toggle_side_bar" 
+    },
+    {   "keys": ["h"],
+        "command": "move", "args": {"by": "characters", "forward": false},
+        "context": [ {"key": "control", "operand": "sidebar_tree"} ]
+    },
+    {   "keys": ["j"],
+        "command": "move", "args": {"by": "lines", "forward": true},
+        "context": [ {"key": "control", "operand": "sidebar_tree"} ]
+    },
+    {   "keys": ["k"],
+        "command": "move", "args": {"by": "lines", "forward": false},
+        "context": [ {"key": "control", "operand": "sidebar_tree"} ]
+    },
+    {   "keys": ["l"],
+        "command": "move", "args": {"by": "characters", "forward": true},
+        "context": [ {"key": "control", "operand": "sidebar_tree"} ]
+    },
+
+    // : opens command palette, without prefilled stupid `:`
+    {   "keys": [":"],
+        "command": "show_overlay", "args": {"overlay": "command_palette"},
+        "context": [{"key": "setting.command_mode"}]
+    },
+
+    // open find panel with `/` in command mode
+    {   "keys": ["ctrl+f"], "command": "set_motion", "args": {
+        "motion": "move",
+        "motion_args": {"by": "pages", "forward": true, "extend": true }},
+        "context": [{"key": "setting.vintage_ctrl_keys"}]
+    }, 
+
+    // spell check
+    {   "keys": ["]","s"],
+        "command": "next_misspelling",
+        "context": [{"key": "setting.command_mode"}]
+    },
+    {   "keys": ["[","s"],
+        "command": "prev_misspelling",
+        "context": [{"key": "setting.command_mode"}]
+    },
+
+    // moving line above/below
+    {   "keys": ["alt+j"],
+        "command": "swap_line_down"
+    },
+    {   "keys": ["alt+k"],
+        "command": "swap_line_up"
+    },
+
+    {   "keys": ["u"], 
+        "command": "soft_undo", 
+        "context": [{"key": "setting.command_mode"}] 
+    },
+    {   "keys": ["ctrl+r"],
+        "command": "redo_or_repeat",
+        "context": [{"key": "setting.vintage_ctrl_keys"}]
+    },
+]
