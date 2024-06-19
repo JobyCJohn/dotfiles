@@ -1,0 +1,27 @@
+{
+	"auto_match_enabled": true,
+	"folder_exclude_patterns": [
+		"*.vshistory",
+		"*ref",
+		"*.cov",
+		"*.vs",
+		"bin",
+		"obj",
+		"output",
+	],
+	"font_size": 10.5,
+	"font_face": "JetBrains Mono",
+	"goto_anything_exclude_gitignore": true,
+	"hide_tab_scrolling_buttons": true,
+	"ignored_packages": [
+	],
+	"rulers": [120],
+	"ruler_width": 2.0,
+	"show_full_path": false,
+	"show_definitions": false,
+	"spell_check": true,
+	"vintage_ctrl_keys": true,
+	"vintage_start_in_command_mode": true,
+    "vintage_use_clipboard": true,
+	"index_files": true,
+}

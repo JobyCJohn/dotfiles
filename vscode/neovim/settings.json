@@ -1,0 +1,61 @@
+{
+    "breadcrumbs.enabled": false,
+
+    "editor.fontFamily": "MesloLGL Nerd Font",
+    "editor.fontLigatures": true,
+    "editor.fontSize": 12,
+    "editor.largeFileOptimizations": false,
+    "editor.lineNumbers": "relative",
+    "editor.minimap.enabled": false,
+    "editor.occurrencesHighlight": "off",
+    "editor.renderControlCharacters": false,
+    "editor.renderLineHighlight": "none",
+    "editor.renderWhitespace": "none",
+    "editor.rulers": [ 120 ],
+    "editor.scrollbar.horizontal": "hidden",
+    "editor.scrollbar.horizontalScrollbarSize": 10,
+    "editor.scrollbar.verticalScrollbarSize": 10,
+    "editor.stickyScroll.enabled": false,  
+    "editor.stickyScroll.scrollWithEditor": false,
+
+    "explorer.excludeGitIgnore": true,
+
+    "extensions.experimental.affinity": { "asvetliakov.vscode-neovim": 1 },
+
+    "files.associations": { "*.cs": "csharp" },
+    "files.exclude": { "**/.history": true, "**/.vs": true, "**/.vscode": true },
+
+    "git.confirmSync": false,
+    "git.mergeEditor": true,
+    "git.openRepositoryInParentFolders": "always",
+
+    "hediet.vscode-drawio.theme": "Kennedy",
+
+    "local-history.path": "C:\\Users\\ing10284\\VSHistory\\.history",
+
+    "search.useGlobalIgnoreFiles": true,
+    "search.useParentIgnoreFiles": true,
+
+    "telemetry.telemetryLevel": "off",
+
+    "terminal.integrated.defaultProfile.windows": "PowerShell",
+    "terminal.integrated.fontFamily": "MesloLGL Nerd Font",
+    "terminal.integrated.fontSize": 12,
+
+    "vscode-neovim.neovimExecutablePaths.win32": "C:\\Tools\\nvim\\bin\\nvim.exe",
+    "vscode-neovim.neovimInitVimPaths.win32": "C:\\Users\\ing10284\\AppData\\Local\\nvim\\init.lua",
+    //"vscode-neovim.neovimExecutablePaths.win32": "/usr/bin/nvim",
+    //"vscode-neovim.neovimInitVimPaths.win32": "~/home/jj-manjaro/.config/nvim/init.lua",
+
+    "window.commandCenter": false,
+    "window.menuBarVisibility": "compact",
+    "window.restoreWindows": "none",
+
+    "workbench.activityBar.location": "hidden",
+    "workbench.editor.enablePreview": false,
+    "workbench.layoutControl.enabled": false,
+    "workbench.startupEditor": "none",
+    "workbench.statusBar.visible": false,
+    "workbench.colorTheme": "Default Dark+",
+    "workbench.sideBar.location": "right",
+}

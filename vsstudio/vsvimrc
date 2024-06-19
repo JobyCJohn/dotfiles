@@ -1,0 +1,95 @@
+set clipboard=unnamed,unnamedplus
+set cursorline
+set ignorecase
+set incsearch
+set relativenumber
+set scrolloff=8
+set smartcase
+set tabstop=4
+set shiftwidth=4
+set softtabstop=4
+
+" prevent x and del key overriding what's in the clipboard
+nnoremap <silent> x "_x
+nnoremap <silent> X "_x
+nnoremap <silent> <Del> "_x
+
+" better indenting
+vnoremap <silent> < <gv
+vnoremap <silent> > >gv
+
+" down/up with cursor position in middle
+nnoremap <silent> n <C-d> <C-d>zz
+nnoremap <silent> n <C-u> <C-u>zz
+
+" yank to the end of line
+nnoremap <silent> Y y$
+
+" join without changing the cursor position
+nnoremap <silent> J mzJ`z
+
+" next search navigation without changing the cursor position
+nnoremap <silent> n nzzzv
+nnoremap <silent> N Nzzzv
+
+" break undo sequence at punctuation marks
+inoremap <silent> , ,<C-g>u
+inoremap <silent> . .<C-g>u
+
+" clear highlights
+nnoremap <silent> <C-l> :nohl<CR>
+
+" add a line break after/before current line
+nnoremap <silent> ]<CR> m`o<Esc>``
+nnoremap <silent> [<CR> m`O<Esc>``
+
+" disabled yank pf the just rewritten selection
+xnoremap "+p "+p
+xnoremap "ap "ap
+xnoremap "0p "0p
+xnoremap p "_dP
+
+" visual studio mappings
+nnoremap <A-j> :vsc Edit.MoveSelectedLinesDown<CR>
+nnoremap <A-k> :vsc Edit.MoveSelectedLinesUp<CR>
+
+nnoremap <C-S-c> :vsc View.GitHub.Copilot.Chat<CR>
+nnoremap <C-S-e> :vsc View.SolutionExplorer<CR>
+nnoremap <C-S-g> :vsc View.GitWindow<CR>
+nnoremap <C-S-r> :vsc View.GitRepositoryWindow<CR>
+nnoremap <C-S-x> :vsc ManageExtensions<CR>
+
+nnoremap <C-k>t :vsc TestExplorer.ShowTestExplorer<CR>
+nnoremap <C-k>o :vsc File.OpenFile<CR>
+nnoremap <C-k><C-o> vsc File.OpenFolder<CR>
+
+nnoremap <C-`> :vsc View.Terminal<CR>
+nnoremap <C-i> :vsc View.NavigateBackward<CR>
+nnoremap <C-o> :vsc View.NavigateForward<CR>
+nnoremap <C-n> :vsc Edit.LineDown<CR>
+nnoremap <C-p> :vsc Edit.LineUp<CR>
+nnoremap <C-r> :vsc Edit.Redo<CR>
+nnoremap <C-t> :vsc Edit.GotoAll<CR>
+nnoremap <C-w>q :vsc Window.CloseDocumentWindow<CR>
+
+nnoremap gcc :vsc Edit.ToggleLineComment<CR>
+
+nnoremap ]c :vsc Diff.NextDifference<CR>
+nnoremap [c :vsc Diff.PreviousDifference<CR>
+nnoremap ]d :vsc Edit.GoToNextIssueInFile<CR>
+nnoremap [d :vsc Edit.GoToPreviousIssueInFile<CR>
+nnoremap ]m :vsc Edit.NextMethod<CR>
+nnoremap [m :vsc Edit.PreviousMethod<CR>
+nnoremap ]s :vsc Tools.MovetoNextSpellingIssue<CR>
+nnoremap [s :vsc Tools.MovetoPirorSpellingIssue<CR>
+nnoremap <silent> ]b gt
+nnoremap <silent> [b gT
+nnoremap <silent> ]p m`o<ESC>p``
+nnoremap <silent> [p m`O<ESC>p``
+
+nnoremap g; :vsc Edit.GoToLastEditLocation<CR>
+nnoremap gD :vsc Edit.PeekDefinition<CR>
+nnoremap gb :vsc Edit.GoToBase<CR>
+nnoremap gd :vsc Edit.GoToDefinition<CR>
+nnoremap gi :vsc Edit.GoToImplementation<CR>
+nnoremap gr :vsc Edit.FindAllReferences<CR>

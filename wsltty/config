@@ -1,0 +1,13 @@
+# To use common configuration in %APPDATA%\mintty, simply remove this file
+CursorType=block
+CursorBlinks=no
+Font=JetBrainsMono NF
+CtrlShiftShortcuts=yes
+Columns=120
+Rows=36
+Term=xterm-256color
+BellType=0
+Scrollbar=none
+FontHeight=10
+ThemeFile=gruvbox.minttyrc
+WindowShortcuts=no
