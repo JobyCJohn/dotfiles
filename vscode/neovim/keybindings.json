@@ -53,7 +53,7 @@
     },
     // git
     {
-        "key": "ctrl+alt+g",
+        "key": "ctrl+shift+r",
         "command": "git-graph.view"
     },
     // diff & merge
@@ -95,7 +95,7 @@
         "command": "-welcome.showNewFileEntries"
     },
     {
-        "key": "ctrl+k shift+r",
+        "key": "ctrl+k r",
         "command": "workbench.action.openRecent"
     },
     {
@@ -290,4 +290,3 @@
         "command": "-workbench.action.navigateBack",
         "when": "canNavigateBack"
     },
-]
