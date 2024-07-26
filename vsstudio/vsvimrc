@@ -1,55 +1,104 @@
 set clipboard=unnamed,unnamedplus
-set hlsearch
+set cursorline
 set ignorecase
 set incsearch
+set relativenumber
+set scrolloff=8
 set smartcase
-set nu rnu
-
-" yank to the end of line
-nnoremap Y y$
-
-" join without changing the cursor position
-nnoremap J mzJ`z
-
-" next search navigation without changing the cursor position
-nnoremap n nzzzv
-nnoremap N Nzzzv
-
-" break undo sequence at punctuation marks
-inoremap , ,<C-g>u
-inoremap . .<C-g>u
+set tabstop=4
+set shiftwidth=4
+set softtabstop=4
 
 " prevent x and del key overriding what's in the clipboard
-nnoremap x "_x
-nnoremap X "_x
-nnoremap <Del> "_x
+nnoremap <silent> x "_x
+nnoremap <silent> X "_x
+nnoremap <silent> <Del> "_x
+
+" better indenting
+vnoremap <silent> < <gv
+vnoremap <silent> > >gv
+
+" down/up with cursor position in middle
+nnoremap <silent> n <C-d> <C-d>zz
+nnoremap <silent> n <C-u> <C-u>zz
+
+" yank to the end of line
+nnoremap <silent> Y y$
+
+" join without changing the cursor position
+nnoremap <silent> J mzJ`z
+
+" next search navigation without changing the cursor position
+nnoremap <silent> n nzzzv
+nnoremap <silent> N Nzzzv
+
+" break undo sequence at punctuation marks
+inoremap <silent> , ,<C-g>u
+inoremap <silent> . .<C-g>u
 
 " clear highlights
-nnoremap <C-l> :nohl<CR>
+nnoremap <silent> <C-l> :nohl<CR>
 
-" add a line break after/before current line
-nnoremap <silent>]<Space> m`o<Esc>``
-nnoremap <silent>[<Space> m`O<Esc>``
+" disabled yank pf the just rewritten selection
+xnoremap "+p "+p
+xnoremap "ap "ap
+xnoremap "0p "0p
+xnoremap p "_dP
 
-" moving line above/below
-map <A-j> :vsc Edit.MoveSelectedLinesDown<CR>
-map <A-k> :vsc Edit.MoveSelectedLinesUp<CR>
+" visual studio mappings
+nnoremap <silent> ]b gt
+nnoremap <silent> [b gT
+nnoremap <silent> ]p m`o<ESC>p``
+nnoremap <silent> [p m`O<ESC>p``
+nnoremap <silent> ]<Space> m`o<Esc>``
+nnoremap <silent> [<Space> m`O<Esc>``
+nnoremap <silent> ]c :vsc Diff.NextDifference<CR>
+nnoremap <silent> [c :vsc Diff.PreviousDifference<CR>
+nnoremap <silent> ]d :vsc Edit.GoToNextIssueInFile<CR>
+nnoremap <silent> [d :vsc Edit.GoToPreviousIssueInFile<CR>
+nnoremap <silent> ]m :vsc Edit.NextMethod<CR>
+nnoremap <silent> [m :vsc Edit.PreviousMethod<CR>
+nnoremap <silent> ]s :vsc Tools.MovetoNextSpellingIssue<CR>
+nnoremap <silent> [s :vsc Tools.MovetoPirorSpellingIssue<CR>
 
-" code navigation
-map gcc :vsc Edit.ToggleLineComment<CR>
-map <C-i> :vsc View.NavigateBackward<CR>
-map <C-o> :vsc View.NavigateForward<CR>
-map ]e :vsc View.NextError<CR>
-map [e :vsc View.PreviousError<CR>
-map <C-r> :vsc Redo<CR>
+nnoremap <A-j> :vsc Edit.MoveSelectedLinesDown<CR>
+nnoremap <A-k> :vsc Edit.MoveSelectedLinesUp<CR>
 
-let mapleader = " "
-map <Leader>f  :vsc Edit.Find<CR>
-map <Leader>p  :vsc Edit.GotoFile<CR>
-map <Leader>t  :vsc Edit.GoToType<CR>
-map <Leader>cf :vsc Edit.FormatDocument<CR>
-map <Leader>g; :vsc Edit.GoToLastEditLocation<CR>
-map <Leader>gd :vsc Edit.GoToDefinition<CR>
-map <Leader>gi :vsc Edit.GoToImplementation<CR>
-map <Leader>gr :vsc Edit.FindAllReferences<CR>
-map <Leader>rn :vsc Refactor.Rename<CR>
+nnoremap gcc :vsc Edit.ToggleLineComment<CR>
+nnoremap gc :vsc Edit.ToggleBlockComment<CR>
+
+nnoremap g; :vsc Edit.GoToLastEditLocation<CR>
+nnoremap gb :vsc Edit.GoToBase<CR>
+nnoremap gd :vsc Edit.GoToDefinition<CR>
+nnoremap gi :vsc Edit.GoToImplementation<CR>
+nnoremap gp :vsc Edit.PeekDefinition<CR>
+nnoremap gr :vsc Edit.FindAllReferences<CR>
+
+" sets the leader key
+let mapleader=" "
+nnoremap <leader>e :vsc View.ViewCode<CR>
+nnoremap <leader>c :vsc View.GitHub.Copilot.Chat<CR>
+nnoremap <leader>i :vsc Copilot.Open<CR>
+nnoremap <leader>t :vsc TestExplorer.ShowTestExplorer<CR>
+nnoremap <leader>x :vsc ManageExtensions<CR>
+nnoremap <leader>t :vsc TestExplorer.ShowTestExplorer<CR>
+nnoremap <leader>fe :vsc View.SolutionExplorer<CR>
+nnoremap <leader>fn :vsc File.NewFile<CR>
+nnoremap <leader>ge :vsc View.GitWindow<CR>
+nnoremap <leader>gr :vsc View.GitRepositoryWindow<CR>
+nnoremap <leader>of :vsc File.OpenContainingFolder<CR>
+nnoremap <leader>oF :vsc File.OpenFolder<CR>
+nnoremap <leader>ss :vsc Edit.GotoToSymbol<CR>
+nnoremap <leader>sS :vsc Edit.GotoToAll<CR>
+nnoremap <leader>sW :vsc Edit.FindInFiles<CR>
+nnoremap <leader>sw :vsc Edit.Find<CR>
+
+nnoremap <C-`> :vsc View.Terminal<CR>
+nnoremap <C-i> :vsc View.NavigateBackward<CR>
+nnoremap <C-o> :vsc View.NavigateForward<CR>
+nnoremap <C-n> :vsc Edit.LineDown<CR>
+nnoremap <C-p> :vsc Edit.LineUp<CR>
+nnoremap <C-r> :vsc Edit.Redo<CR>
+nnoremap <C-t> :vsc Edit.GotoAll<CR>
+
+nnoremap <C-w>q :vsc Window.CloseDocumentWindow<CR>

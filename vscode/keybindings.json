@@ -1,26 +1,17 @@
 // Place your key bindings in this file to override the defaults
 [
-    // layout, sidebar navigation
+    // project navigation
     {
-        "key": "ctrl+k c",
-        "command": "workbench.action.toggleCenteredLayout"
+        "key": "ctrl+k ctrl+p",
+        "command": "projectManager.listProjects"
     },
     {
-        "key": "ctrl+k c",
-        "command": "-workbench.files.action.compareWithClipboard"
+        "key": "ctrl+k ctrl+p",
+        "command": "-workbench.action.showAllEditors"
     },
     {
-        "key": "ctrl+shift+b",
-        "command": "workbench.action.toggleSidebarVisibility"
-    },
-    {
-        "key": "ctrl+b",
-        "command": "-workbench.action.toggleSidebarVisibility"
-    },
-    {
-        "key": "ctrl+shift+b",
-        "command": "-workbench.action.tasks.build",
-        "when": "taskCommandsRegistered"
+        "key": "shift+alt+p",
+        "command": "-projectManager.listProjects"
     },
     // editor window management
     {
@@ -50,6 +41,25 @@
     {
         "key": "ctrl+k u",
         "command": "-workbench.action.closeUnmodifiedEditors"
+    },
+    {
+        "key": "f7",
+        "command": "workbench.action.focusActiveEditorGroup",
+    },
+    {
+        "key": "ctrl+escape",
+        "command": "-workbench.action.focusActiveEditorGroup",
+        "when": "terminalFocus"
+    },
+    {
+        "key": "f7",
+        "command": "-editor.action.accessibleDiffViewer.next",
+        "when": "isInDiffEditor"
+    },
+    {
+        "key": "f7",
+        "command": "-inlineChat.moveToNextHunk",
+        "when": "inlineChatHasProvider && inlineChatVisible"
     },
     // git
     {
@@ -87,32 +97,6 @@
     },
     // file & folder
     {
-        "key": "ctrl+k n",
-        "command": "welcome.showNewFileEntries"
-    },
-    {
-        "key": "ctrl+alt+meta+n",
-        "command": "-welcome.showNewFileEntries"
-    },
-    {
-        "key": "ctrl+k r",
-        "command": "workbench.action.openRecent"
-    },
-    {
-        "key": "ctrl+r",
-        "command": "-workbench.action.openRecent"
-    },
-    {
-        "key": "ctrl+k r",
-        "command": "revealFileInOS",
-        "when": "true"
-    },
-    {
-        "key": "ctrl+alt+r",
-        "command": "-revealFileInOS",
-        "when": "!editorFocus"
-    },
-    {
         "key": "ctrl+k o",
         "command": "workbench.action.files.openFile",
         "when": "true"
@@ -128,11 +112,6 @@
         "when": "isMacNative && openFolderWorkspaceSupport"
     },
     {
-        "key": "ctrl+k o",
-        "command": "workbench.action.files.openFile",
-        "when": "true"
-    },
-    {
         "key": "ctrl+o",
         "command": "-workbench.action.files.openFile",
         "when": "true"
@@ -141,11 +120,6 @@
         "key": "ctrl+o",
         "command": "-workbench.action.files.openFileFolder",
         "when": "isMacNative && openFolderWorkspaceSupport"
-    },
-    {
-        "key": "ctrl+k o",
-        "command": "workbench.action.files.openLocalFile",
-        "when": "remoteFileDialogVisible"
     },
     {
         "key": "ctrl+k o",
@@ -153,14 +127,9 @@
         "when": "activeEditor"
     },
     {
-        "key": "ctrl+k ctrl+o",
-        "command": "workbench.action.files.openFolderViaWorkspace",
-        "when": "!openFolderWorkspaceSupport && workbenchState == 'workspace'"
-    },
-    {
-        "key": "ctrl+o",
-        "command": "-workbench.action.files.openFolderViaWorkspace",
-        "when": "!openFolderWorkspaceSupport && workbenchState == 'workspace'"
+        "key": "ctrl+alt+r",
+        "command": "-revealFileInOS",
+        "when": "!editorFocus"
     },
     // coding
     {
@@ -207,6 +176,85 @@
         "key": "ctrl+.",
         "command": "-editor.action.quickFix",
         "when": "editorHasCodeActionsProvider && textInputFocus && !editorReadonly"
+    },
+    {
+        "key": "alt+,",
+        "command": "workbench.action.openGlobalKeybindings"
+    },
+    {
+        "key": "ctrl+k ctrl+s",
+        "command": "editor.action.surroundWithSnippet"
+    },    
+    {
+        "key": "ctrl+k ctrl+s",
+        "command": "-workbench.action.openGlobalKeybindings"
+    },
+    {
+        "key": "ctrl+k ctrl+d",
+        "command": "editor.action.formatDocument",
+        "when": "editorHasDocumentFormattingProvider && editorTextFocus && !editorReadonly && !inCompositeEditor"
+    },
+    {
+        "key": "ctrl+k ctrl+r",
+        "command": "editor.action.refactor"
+    },
+    {
+        "key": "shift+alt+f",
+        "command": "-editor.action.formatDocument",
+        "when": "editorHasDocumentFormattingProvider && editorTextFocus && !editorReadonly && !inCompositeEditor"
+    },
+    {
+        "key": "ctrl+shift+r",
+        "command": "-rerunSearchEditorSearch",
+        "when": "inSearchEditor"
+    },
+    {
+        "key": "ctrl+shift+r",
+        "command": "-editor.action.refactor",
+        "when": "editorHasCodeActionsProvider && textInputFocus && !editorReadonly"
+    },
+    {
+        "key": "ctrl+k ctrl+r",
+        "command": "-git.revertSelectedRanges",
+        "when": "isInDiffEditor && !operationInProgress"
+    },
+    {
+        "key": "ctrl+k ctrl+r",
+        "command": "-workbench.action.keybindingsReference"
+    },
+    {
+        "key": "ctrl+shift+t",
+        "command": "-workbench.action.reopenClosedEditor"
+    },
+    {
+        "key": "ctrl+shift+t",
+        "command": "workbench.action.gotoSymbol",
+        "when": "!accessibilityHelpIsShown && !accessibleViewIsShown"
+    },
+    {
+        "key": "ctrl+shift+o",
+        "command": "-workbench.action.gotoSymbol",
+        "when": "!accessibilityHelpIsShown && !accessibleViewIsShown"
+    },
+    {
+        "key": "ctrl+n",
+        "command": "editor.action.wordHighlight.next",
+        "when": "editorTextFocus && hasWordHighlights"
+    },
+    {
+        "key": "f7",
+        "command": "-editor.action.wordHighlight.next",
+        "when": "editorTextFocus && hasWordHighlights"
+    },
+    {
+        "key": "ctrl+p",
+        "command": "editor.action.wordHighlight.prev",
+        "when": "editorTextFocus && hasWordHighlights"
+    },
+    {
+        "key": "shift+f7",
+        "command": "-editor.action.wordHighlight.prev",
+        "when": "editorTextFocus && hasWordHighlights"
     },
     // ************ Removed mapping for neovim configuration ************
     {
@@ -279,14 +327,28 @@
         "key": "ctrl+shift+]",
         "command": "-editor.unfold",
         "when": "editorTextFocus && foldingEnabled"
+    },    
+    {
+        "key": "ctrl+t",
+        "command": "-vscode-neovim.send-cmdline",
+        "when": "neovim.init && neovim.mode == 'cmdline'"
     },
     {
-        "key": "ctrl+shift+-",
-        "command": "-workbench.action.navigateForward",
-        "when": "canNavigateForward"
+        "key": "ctrl+k c",
+        "command": "-workbench.files.action.compareWithClipboard"
     },
     {
-        "key": "ctrl+alt+-",
-        "command": "-workbench.action.navigateBack",
-        "when": "canNavigateBack"
+        "key": "ctrl+b",
+        "command": "-workbench.action.toggleSidebarVisibility"
     },
+    {
+        "key": "ctrl+t",
+        "command": "-vscode-neovim.send",
+        "when": "editorTextFocus && neovim.ctrlKeysNormal.t && neovim.init && neovim.mode != 'insert' && editorLangId not in 'neovim.editorLangIdExclusions'"
+    },
+    {
+        "key": "ctrl+t",
+        "command": "-vscode-neovim.send",
+        "when": "editorTextFocus && neovim.ctrlKeysInsert.t && neovim.init && neovim.mode == 'insert' && editorLangId not in 'neovim.editorLangIdExclusions'"
+    },
+]
