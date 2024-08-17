@@ -2,54 +2,70 @@ local wezterm = require("wezterm")
 local act = wezterm.action
 local mux = wezterm.mux
 
+wezterm.on('gui-startup', function(cmd)
+  local tab, pane, window = mux.spawn_window(cmd or {})
+  window:gui_window():maximize()
+end)
+
+local default_prog = nil
+if string.find(wezterm.target_triple, "windows") then
+	default_prog = { "pwsh.exe", "-NoLogo" }
+end
+
 return {
-
 	audible_bell = "Disabled",
-	check_for_updates = false,
 	color_scheme = "tokyonight_night",
-	cursor_blink_rate = 0,
-	default_cursor_style = "SteadyBlock",
-	disable_default_key_bindings = true,
-	enable_tab_bar = false,
-	exit_behavior = "CloseOnCleanExit",
-	font_size = 10.0,
-	force_reverse_video_cursor = true,
-	hide_tab_bar_if_only_one_tab = true,
-	initial_cols = 90,
-	initial_rows = 24,
-	leader = { key = "a", mods = "CTRL", timeout_milliseconds = 1000 },
-	scrollback_lines = 5000,
-	use_dead_keys = false,
-	window_background_opacity = 0.95,
-	window_decorations = "RESIZE",
-	window_padding = { left = 0, right = 0, top = 0, bottom = 0 },
 
+    default_prog = default_prog,
+
+	font_size = 10.0,
+
+	initial_cols = 120,
+	initial_rows = 30,
+
+	scrollback_lines = 5000,
+	enable_tab_bar = false,
+	hide_tab_bar_if_only_one_tab = true,
+
+	use_dead_keys = false,
+	send_composed_key_when_left_alt_is_pressed = false,
+	send_composed_key_when_right_alt_is_pressed = false,
+	disable_default_key_bindings = true,
+
+    animation_fps = 1,
+    cursor_blink_ease_in = 'Constant',
+    cursor_blink_ease_out = 'Constant',
+    default_cursor_style = "BlinkingBar",
+	-- force_reverse_video_cursor = true,
+
+    window_close_confirmation = 'NeverPrompt',
+	window_background_opacity = 0.95,
+	window_padding = { left = 2, right = 2, top = 2, bottom = 2 },
+
+	leader = { key = "Space", mods = "CTRL", timeout_milliseconds = 1000 },
 	keys = {
-		-- tab navigation
-		{ key = "Tab", mods = "CTRL", action = act.ActivateTabRelative(1) },
-		{ key = "Tab", mods = "SHIFT|CTRL", action = act.ActivateTabRelative(-1) },
-		{ key = "Enter", mods = "ALT", action = act.ToggleFullScreen },
-		{ key = "Enter", mods = "LEADER", action = wezterm.action.ActivateCopyMode },
-		-- splitting
-		{ key = "-", mods = "LEADER", action = wezterm.action.SplitVertical({ domain = "CurrentPaneDomain" }) },
-		{ key = "\\", mods = "LEADER", action = wezterm.action.SplitHorizontal({ domain = "CurrentPaneDomain" }) },
-		{ key = "s", mods = "LEADER", action = wezterm.action({ SplitVertical = { domain = "CurrentPaneDomain" } }) },
-		{
-			key = "v",
-			mods = "LEADER",
-			action = wezterm.action({ SplitHorizontal = { domain = "CurrentPaneDomain" } }),
-		},
 		{ key = "-", mods = "LEADER", action = act.SplitVertical({ domain = "CurrentPaneDomain" }) },
 		{ key = "\\", mods = "LEADER", action = act.SplitHorizontal({ domain = "CurrentPaneDomain" }) },
-		-- pane navigation
-		{ key = "h", mods = "LEADER", action = wezterm.action({ ActivatePaneDirection = "Left" }) },
-		{ key = "j", mods = "LEADER", action = wezterm.action({ ActivatePaneDirection = "Down" }) },
-		{ key = "k", mods = "LEADER", action = wezterm.action({ ActivatePaneDirection = "Up" }) },
-		{ key = "l", mods = "LEADER", action = wezterm.action({ ActivatePaneDirection = "Right" }) },
-		-- zoom in/out
-		{ key = "H", mods = "LEADER|SHIFT", action = wezterm.action({ AdjustPaneSize = { "Left", 5 } }) },
-		{ key = "J", mods = "LEADER|SHIFT", action = wezterm.action({ AdjustPaneSize = { "Down", 5 } }) },
-		{ key = "K", mods = "LEADER|SHIFT", action = wezterm.action({ AdjustPaneSize = { "Up", 5 } }) },
-		{ key = "L", mods = "LEADER|SHIFT", action = wezterm.action({ AdjustPaneSize = { "Right", 5 } }) },
+		{ key = "s", mods = "LEADER", action = act({ SplitVertical = { domain = "CurrentPaneDomain" } }) },
+		{ key = "v", mods = "LEADER", action = act({ SplitHorizontal = { domain = "CurrentPaneDomain" } }) },
+
+		{ key = "h", mods = "LEADER", action = act({ ActivatePaneDirection = "Left" }) },
+		{ key = "j", mods = "LEADER", action = act({ ActivatePaneDirection = "Down" }) },
+		{ key = "k", mods = "LEADER", action = act({ ActivatePaneDirection = "Up" }) },
+		{ key = "l", mods = "LEADER", action = act({ ActivatePaneDirection = "Right" }) },
+
+		{ key = "x", mods = "LEADER", action = act({ CloseCurrentPane = { confirm = true } }) },
+		{
+			key = "/",
+			mods = "LEADER",
+			action = act.Multiple({ act.CopyMode("ClearPattern"), act.Search({ CaseInSensitiveString = "" }) }),
+		},
+		{ key = "Escape", mods = "LEADER", action = act.ActivateCopyMode },
+		{ key = "Enter", mods = "LEADER", action = act.ToggleFullScreen },
+
+		{ key = "h", mods = "CTRL|SHIFT", action = act({ AdjustPaneSize = { "Left", 2 } }) },
+		{ key = "j", mods = "CTRL|SHIFT", action = act({ AdjustPaneSize = { "Down", 2 } }) },
+		{ key = "k", mods = "CTRL|SHIFT", action = act({ AdjustPaneSize = { "Up", 2 } }) },
+		{ key = "l", mods = "CTRL|SHIFT", action = act({ AdjustPaneSize = { "Right", 2 } }) },
 	},
 }

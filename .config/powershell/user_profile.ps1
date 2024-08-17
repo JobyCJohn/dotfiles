@@ -5,24 +5,23 @@
 
 # Theme
 Import-Module posh-git
-oh-my-posh init pwsh --config ~/.spaceship.omp.json | Invoke-Expression
+oh-my-posh init pwsh --config C:\users\ing10284\.config\.spaceship.omp.json | Invoke-Expression
+
 Import-Module -Name Terminal-Icons
 
 # PSReadLine
-Set-PSReadLineOption -EditMode Vi
+Import-Module -Name PSReadLine
+Set-PSReadLineOption -EditMode Emacs
 Set-PSReadLineOption -BellStyle None
-Set-PSReadLineKeyHandler -Chord 'Ctrl+d' -Function DeleteChar
 Set-PSReadLineOption -PredictionSource History
+Set-PSReadLineKeyHandler -Chord 'Ctrl+d' -Function DeleteChar
+Set-PSReadLineKeyHandler -Key UpArrow -Function HistorySearchBackward
+Set-PSReadLineKeyHandler -Key DownArrow -Function HistorySearchForward
+Set-PSReadLineKeyHandler -Key Tab -Function MenuComplete
 
 # Fzf
 Import-Module PSFzf
 Set-PsFzfOption -PSReadlineChordProvider 'Ctrl+t' -PSReadlineChordReverseHistory 'Ctrl+r' -PSReadlineChordSetLocation 'Alt+c'
 
 # Alias
-Set-Alias -Name vim -Value nvim
 
-# Utilities
-function which ($command) {
-  Get-Command -Name $command -ErrorAction SilentlyContinue |
-    Select-Object -ExpandProperty Path -ErrorAction SilentlyContinue
-}
