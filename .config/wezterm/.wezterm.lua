@@ -1,11 +1,5 @@
 local wezterm = require("wezterm")
 local act = wezterm.action
-local mux = wezterm.mux
-
-wezterm.on('gui-startup', function(cmd)
-  local tab, pane, window = mux.spawn_window(cmd or {})
-  window:gui_window():maximize()
-end)
 
 local default_prog = nil
 if string.find(wezterm.target_triple, "windows") then
@@ -40,7 +34,7 @@ return {
 
     window_close_confirmation = 'NeverPrompt',
 	window_background_opacity = 0.95,
-	window_padding = { left = 2, right = 2, top = 2, bottom = 2 },
+	window_padding = { left = 2, right = 2, top = 4, bottom = 4 },
 
 	leader = { key = "Space", mods = "CTRL", timeout_milliseconds = 1000 },
 	keys = {
