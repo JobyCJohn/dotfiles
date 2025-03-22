@@ -5,9 +5,6 @@ set incsearch
 set relativenumber
 set scrolloff=8
 set smartcase
-set tabstop=4
-set shiftwidth=4
-set softtabstop=4
 
 " prevent x and del key overriding what's in the clipboard
 nnoremap <silent> x "_x
@@ -39,11 +36,8 @@ inoremap <silent> . .<C-g>u
 " clear highlights
 nnoremap <silent> <C-l> :nohl<CR>
 
-" disabled yank pf the just rewritten selection
-xnoremap "+p "+p
-xnoremap "ap "ap
-xnoremap "0p "0p
-xnoremap p "_dP
+" visual mode "P" map, because it will never yank the pasted over text into the register
+xnoremap p P
 
 " visual studio mappings
 nnoremap <silent> ]b gt
@@ -58,6 +52,8 @@ nnoremap <silent> ]d :vsc Edit.GoToNextIssueInFile<CR>
 nnoremap <silent> [d :vsc Edit.GoToPreviousIssueInFile<CR>
 nnoremap <silent> ]m :vsc Edit.NextMethod<CR>
 nnoremap <silent> [m :vsc Edit.PreviousMethod<CR>
+nnoremap <silent> ]e :vsc View.NextError<CR>
+nnoremap <silent> [e :vsc View.PreviousError<CR>
 nnoremap <silent> ]s :vsc Tools.MovetoNextSpellingIssue<CR>
 nnoremap <silent> [s :vsc Tools.MovetoPirorSpellingIssue<CR>
 
@@ -65,7 +61,9 @@ nnoremap <A-j> :vsc Edit.MoveSelectedLinesDown<CR>
 nnoremap <A-k> :vsc Edit.MoveSelectedLinesUp<CR>
 
 nnoremap gcc :vsc Edit.ToggleLineComment<CR>
+vnoremap gcc :vsc Edit.ToggleLineComment<CR>
 nnoremap gc :vsc Edit.ToggleBlockComment<CR>
+vnoremap gc :vsc Edit.ToggleBlockComment<CR>
 
 nnoremap g; :vsc Edit.GoToLastEditLocation<CR>
 nnoremap gb :vsc Edit.GoToBase<CR>
@@ -76,29 +74,34 @@ nnoremap gr :vsc Edit.FindAllReferences<CR>
 
 " sets the leader key
 let mapleader=" "
-nnoremap <leader>e :vsc View.ViewCode<CR>
+nnoremap <leader>e :vsc View.SolutionExplorer<CR>
 nnoremap <leader>c :vsc View.GitHub.Copilot.Chat<CR>
 nnoremap <leader>i :vsc Copilot.Open<CR>
-nnoremap <leader>t :vsc TestExplorer.ShowTestExplorer<CR>
+nnoremap <leader>v :vsc View.ViewCode<CR>
 nnoremap <leader>x :vsc ManageExtensions<CR>
-nnoremap <leader>t :vsc TestExplorer.ShowTestExplorer<CR>
-nnoremap <leader>fe :vsc View.SolutionExplorer<CR>
+nnoremap <leader>cf :vsc Edit.FormatDocument<CR>
 nnoremap <leader>fn :vsc File.NewFile<CR>
+nnoremap <leader>fp :vsc View.Repository<CR>
 nnoremap <leader>ge :vsc View.GitWindow<CR>
 nnoremap <leader>gr :vsc View.GitRepositoryWindow<CR>
 nnoremap <leader>of :vsc File.OpenContainingFolder<CR>
 nnoremap <leader>oF :vsc File.OpenFolder<CR>
 nnoremap <leader>ss :vsc Edit.GotoToSymbol<CR>
 nnoremap <leader>sS :vsc Edit.GotoToAll<CR>
-nnoremap <leader>sW :vsc Edit.FindInFiles<CR>
 nnoremap <leader>sw :vsc Edit.Find<CR>
+nnoremap <leader>sW :vsc Edit.FindInFiles<CR>
+nnoremap <leader>te :vsc View.Tfs.TeamExplorer<CR>
+nnoremap <leader>tt :vsc TestExplorer.ShowTestExplorer<CR>
 
 nnoremap <C-`> :vsc View.Terminal<CR>
-nnoremap <C-i> :vsc View.NavigateBackward<CR>
-nnoremap <C-o> :vsc View.NavigateForward<CR>
+nnoremap <C-o> :vsc View.NavigateBackward<CR>
+nnoremap <C-i> :vsc View.NavigateForward<CR>
 nnoremap <C-n> :vsc Edit.LineDown<CR>
 nnoremap <C-p> :vsc Edit.LineUp<CR>
 nnoremap <C-r> :vsc Edit.Redo<CR>
-nnoremap <C-t> :vsc Edit.GotoAll<CR>
+nnoremap <C-t> :vsc Edit.GotoToAll<CR>
+nnoremap <C-S-t> :vsc Window.QuickLaunch<CR>
+nnoremap <C-S-p> :vsc View.Repository<CR>
 
 nnoremap <C-w>q :vsc Window.CloseDocumentWindow<CR>
+nnoremap <C-w>o :vsc File.CloseOtherTabs<CR>

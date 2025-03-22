@@ -4,7 +4,6 @@
 [core]
     autocrlf = false
     editor = nvim
-    excludesFile = C:\\Users\\ing10284\\.gitignore
 
 ; [delta]
 ;     navigate = true    

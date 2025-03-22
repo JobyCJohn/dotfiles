@@ -1,0 +1,23 @@
+*.dll
+*.exe
+*.ini
+*.pdb
+*.snk
+
+*.cache/
+*.history/
+*.vs/
+*.vscode/
+*.vshistory/
+*.azuredevops/
+
+# tags
+*.globalignore
+tags
+
+# build
+**/node_modules/**
+[Bb]in/
+[Oo]bj/
+[Oo]utput/
+[Rr]ef/
