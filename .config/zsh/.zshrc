@@ -19,7 +19,6 @@ zstyle ':completion:*' rehash true                              # automatically 
 # Speed up completions
 zstyle ':completion:*' accept-exact '*(N)'
 zstyle ':completion:*' use-cache on
-zstyle ':completion:*' cache-path ~/.zsh/cache
 HISTFILE=~/.zhistory
 HISTSIZE=10000
 SAVEHIST=10000
@@ -45,10 +44,17 @@ bindkey "\e[1;5C" forward-word
 bindkey "\e[1;5D" backward-word
 
 export VISUAL="nvim"
-export EDITOR="$VISUAL"
+export EDITOR="nvim"
+export PATH="$PATH:~/.local/bin"
 
 # Alias
-alias open='nohup nautilus . > /dev/null 2>&1 &'
+if [[ "$OSTYPE" == "linux-gnu"* ]]; then
+  alias open='nohup nautilus . > /dev/null 2>&1 &'
+elif [[ "$OSTYPE" == "darwin"* ]]; then
+  alias open='open'
+elif [[ "$OSTYPE" == "cygwin" || "$OSTYPE" == "msys" || "$OSTYPE" == "win32" ]]; then
+  alias open='explorer.exe'
+fi
 
 # File and directory colors for ls and other outputs
 export LS_OPTIONS='--color=auto'
@@ -71,12 +77,12 @@ export LESS_TERMCAP_us=$'\E[01;36m'
 export LESS=-R
 
 # Plugins section
-source /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
-source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
-source /usr/share/zsh/plugins/zsh-history-substring-search/zsh-history-substring-search.zsh
+source ~/.oh-my-zsh/custom/plugins/zsh-autosuggestions/zsh-autosuggestions.plugin.zsh
+source ~/.oh-my-zsh/custom/plugins/zsh-history-substring-search/zsh-history-substring-search.zsh
+source ~/.oh-my-zsh/custom/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.plugin.zsh
 
 # oh-my-posh
-eval "$(oh-my-posh init zsh --config ~/.config/spaceship.omp.json)"
+eval "$(oh-my-posh init zsh --config ~/.oh-my-posh/spaceship.omp.json)"
 
 # fzf
 export FZF_DEFAULT_COMMAND="fd --type f --hidden --follow --exclude '(.git | *.vdi)'"
@@ -90,5 +96,3 @@ export FZF_DEFAULT_OPTS=" \
 export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
-
-neofetch
