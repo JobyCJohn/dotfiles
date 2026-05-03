@@ -1,152 +1,224 @@
-// Place your key bindings in this file to override the defaults
 [
-    // editor window management
-    {
-        "key": "ctrl+w o",
-        "command": "workbench.action.closeOtherEditors"
-    },
-    {
-        "key": "ctrl+w q",
-        "command": "workbench.action.closeActiveEditor"
-    },
-    // diff & merge
-    {
-        "key": "alt+down",
-        "command": "editor.action.dirtydiff.next",
-        "when": "editorTextFocus && !textCompareEditorActive"
-    },
-    {
-        "key": "alt+f3",
-        "command": "-editor.action.dirtydiff.next",
-        "when": "editorTextFocus && !textCompareEditorActive"
-    },
-    {
-        "key": "alt+up",
-        "command": "editor.action.dirtydiff.previous",
-        "when": "editorTextFocus && !textCompareEditorActive"
-    },
-    {
-        "key": "shift+alt+f3",
-        "command": "-editor.action.dirtydiff.previous",
-        "when": "editorTextFocus && !textCompareEditorActive"
-    },
-    {
-        "key": "alt+down",
-        "command": "workbench.action.compareEditor.nextChange"
-    },
-    {
-        "key": "alt+up",
-        "command": "workbench.action.compareEditor.previousChange"
-    },
-    // move current line up/down
-    {
-        "key": "ctrl+alt+j",
-        "command": "editor.action.moveLinesDownAction",
-        "when": "editorTextFocus && !editorReadonly"
-    },
-    {
-        "key": "ctrl+alt+k",
-        "command": "editor.action.moveLinesUpAction",
-        "when": "editorTextFocus && !editorReadonly"
-    },
-    {
-        "key": "alt+j",
-        "command": "editor.action.moveLinesDownAction",
-        "when": "editorTextFocus && !editorReadonly"
-    },
-    {
-        "key": "alt+down",
-        "command": "-editor.action.moveLinesDownAction",
-        "when": "editorTextFocus && !editorReadonly"
-    },
-    {
-        "key": "alt+k",
-        "command": "editor.action.moveLinesUpAction",
-        "when": "editorTextFocus && !editorReadonly"
-    },
-    {
-        "key": "alt+up",
-        "command": "-editor.action.moveLinesUpAction",
-        "when": "editorTextFocus && !editorReadonly"
-    },
-    {
-        "key": "alt+enter",
-        "command": "-search.action.openInEditor",
-        "when": "hasSearchResult && searchViewletFocus"
-    },
-    {
-        "key": "alt+enter",
-        "command": "editor.action.quickFix",
-        "when": "editorHasCodeActionsProvider && textInputFocus && !editorReadonly"
-    },
-    {
-        "key": "shift+k",
-        "command": "editor.action.showHover",
-        "when": "editorTextFocus"
-    },
-    // navigate backward/forward
-    {
-        
-        "key": "alt+right",
-        "command": "-workbench.action.navigateForward",
-        "when": "canNavigateForward"
-    },
-    {
-        "key": "ctrl+i",
-        "command": "workbench.action.navigateForward",
-        "when": "canNavigateForward"
-    },
-    {
-        "key": "ctrl+o",
-        "command": "-workbench.action.files.openFile",
-        "when": "true"
-    },
-    {
-        "key": "alt+left",
-        "command": "-workbench.action.navigateBack",
-        "when": "canNavigateBack"
-    },
-    {
-        "key": "ctrl+o",
-        "command": "workbench.action.navigateBack",
-        "when": "canNavigateBack"
-    },
-    // configure quick open to Ctrl+T and Ctrl+Shift+T
-    {
-        "key": "ctrl+shift+t",
-        "command": "-workbench.action.reopenClosedEditor"
-    },
-    {
-        "key": "ctrl+t",
-        "command": "-workbench.action.showAllSymbols"
-    },
-    {
-        "key": "ctrl+t",
-        "command": "workbench.action.quickOpen"
-    },
-    {
-        "key": "ctrl+b",
-        "command": "-workbench.action.toggleSidebarVisibility"
-    },
-    {
-        "key": "ctrl+shift+b",
-        "command": "workbench.action.toggleSidebarVisibility"
-    },
-    {
-        "key": "ctrl+p",
-        "command": "-workbench.action.quickOpen"
-    },
-    {
-        "key": "ctrl+shift+t",
-        "command": "-mergeEditor.toggleBetweenInputs",
-        "when": "isMergeEditor"
-    },
-    {
-        "key": "ctrl+shift+t",
-        "command": "projectManager.listProjects"
-    },
-    {
-        "key": "shift+alt+p",
-        "command": "-projectManager.listProjects"
-    },
+  // editor window management
+  {
+    "key": "ctrl+w o",
+    "command": "workbench.action.closeOtherEditors"
+  },
+  {
+    "key": "ctrl+w q",
+    "command": "workbench.action.closeActiveEditor"
+  },
+  // move current line up/down
+  {
+    "key": "ctrl+alt+j",
+    "command": "editor.action.moveLinesDownAction",
+    "when": "editorTextFocus && !editorReadonly"
+  },
+  {
+    "key": "ctrl+alt+k",
+    "command": "editor.action.moveLinesUpAction",
+    "when": "editorTextFocus && !editorReadonly"
+  },
+  {
+    "key": "alt+j",
+    "command": "editor.action.moveLinesDownAction",
+    "when": "editorTextFocus && !editorReadonly"
+  },
+  {
+    "key": "alt+down",
+    "command": "-editor.action.moveLinesDownAction",
+    "when": "editorTextFocus && !editorReadonly"
+  },
+  {
+    "key": "alt+k",
+    "command": "editor.action.moveLinesUpAction",
+    "when": "editorTextFocus && !editorReadonly"
+  },
+  {
+    "key": "alt+up",
+    "command": "-editor.action.moveLinesUpAction",
+    "when": "editorTextFocus && !editorReadonly"
+  },
+  // navigate backward/forward
+  {
+    "key": "alt+right",
+    "command": "-workbench.action.navigateForward",
+    "when": "canNavigateForward"
+  },
+  {
+    "key": "ctrl+i",
+    "command": "workbench.action.navigateForward",
+    "when": "canNavigateForward"
+  },
+  {
+    "key": "ctrl+o",
+    "command": "-workbench.action.files.openFile",
+    "when": "true"
+  },
+  {
+    "key": "alt+left",
+    "command": "-workbench.action.navigateBack",
+    "when": "canNavigateBack"
+  },
+  {
+    "key": "ctrl+o",
+    "command": "workbench.action.navigateBack",
+    "when": "canNavigateBack"
+  },
+  // configure quick open to Ctrl+T
+  {
+    "key": "ctrl+t",
+    "command": "-workbench.action.showAllSymbols"
+  },
+  {
+    "key": "ctrl+p",
+    "command": "-workbench.action.quickOpen"
+  },
+  {
+    "key": "ctrl+t",
+    "command": "workbench.action.quickOpen",
+  },
+  // toggle sidebar visibility
+  {
+    "key": "ctrl+b",
+    "command": "-workbench.action.toggleSidebarVisibility"
+  },
+  {
+    "key": "ctrl+shift+b",
+    "command": "workbench.action.toggleSidebarVisibility"
+  },
+  // configure git graph to Ctrl+Alt+G
+  {
+    "key": "ctrl+alt+g",
+    "command": "-workbench.action.terminal.sendSequence",
+    "when": "terminalFocus"
+  },
+  {
+    "key": "ctrl+alt+r",
+    "command": "git-graph.view"
+  },
+  // toggle inline/side-by-side diff
+  {
+    "key": "ctrl+alt+d",
+    "command": "toggle.diff.renderSideBySide",
+  },
+  // quick fixes and hover
+  {
+    "key": "alt+enter",
+    "command": "-search.action.openInEditor",
+    "when": "hasSearchResult && searchViewletFocus"
+  },
+  {
+    "key": "alt+enter",
+    "command": "editor.action.quickFix",
+    "when": "editorHasCodeActionsProvider && textInputFocus && !editorReadonly"
+  },
+  {
+    "key": "shift+k",
+    "command": "editor.action.showHover",
+    "when": "editorTextFocus"
+  },
+  // vscode-vim undo/redo
+  {
+    "key": "u",
+    "command": "undo",
+    "when": "textInputFocus && vim.mode == 'Normal'"
+  },
+  {
+    "key": "ctrl+r",
+    "command": "redo",
+    "when": "textInputFocus && vim.mode == 'Normal'"
+  },
+  // merge editor
+  {
+    "key": "alt+down",
+    "command": "merge-conflict.next",
+    "when": "isMergeEditor && editorTextFocus"
+  },
+  {
+    "key": "alt+up",
+    "command": "merge-conflict.previous",
+    "when": "isMergeEditor && editorTextFocus"
+  },
+  {
+    "key": "alt+right",
+    "command": "merge-conflict.accept.incoming",
+    "when": "isMergeEditor && editorTextFocus"
+  },
+  {
+    "key": "alt+left",
+    "command": "merge-conflict.accept.current",
+    "when": "isMergeEditor && editorTextFocus"
+  },
+  {
+    "key": "shift+alt+right",
+    "command": "merge-conflict.accept.all-incoming",
+    "when": "isMergeEditor && editorTextFocus"
+  },
+  {
+    "key": "shift+alt+left",
+    "command": "merge-conflict.accept.all-current",
+    "when": "isMergeEditor && editorTextFocus"
+  },
+  {
+    "key": "shift+alt+right",
+    "command": "-editor.action.smartSelect.expand",
+    "when": "editorTextFocus"
+  },
+  {
+    "key": "shift+alt+left",
+    "command": "-editor.action.smartSelect.shrink",
+    "when": "editorTextFocus"
+  },
+  // diff editor
+  {
+    "key": "alt+down",
+    "command": "multiDiffEditor.goToNextChange",
+    "when": "activeEditor == 'multiDiffEditor'"
+  },
+  {
+    "key": "alt+up",
+    "command": "multiDiffEditor.goToPreviousChange",
+    "when": "activeEditor == 'multiDiffEditor'"
+  },
+  {
+    "key": "alt+down",
+    "command": "workbench.action.compareEditor.nextChange",
+    "when": "editorTextFocus && inDiffEditor && !isMergeEditor"
+  },
+  {
+    "key": "alt+up",
+    "command": "workbench.action.compareEditor.previousChange",
+    "when": "editorTextFocus && inDiffEditor && !isMergeEditor"
+  },
+  {
+    "key": "alt+f5",
+    "command": "-workbench.action.compareEditor.nextChange",
+    "when": "editorTextFocus && inDiffEditor"
+  },
+  {
+    "key": "shift+alt+f5",
+    "command": "-workbench.action.compareEditor.previousChange",
+    "when": "editorTextFocus && inDiffEditor"
+  },
+  {
+    "key": "alt+down",
+    "command": "workbench.action.editor.nextChange",
+    "when": "editorTextFocus && !inDiffEditor && !isMergeEditor && quickDiffDecorationCount != '0'"
+  },
+  {
+    "key": "alt+up",
+    "command": "workbench.action.editor.previousChange",
+    "when": "editorTextFocus && !inDiffEditor && !isMergeEditor && quickDiffDecorationCount != '0'"
+  },
+  {
+    "key": "alt+f5",
+    "command": "-workbench.action.editor.nextChange",
+    "when": "editorTextFocus && quickDiffDecorationCount != '0'"
+  },
+  {
+    "key": "shift+alt+f5",
+    "command": "-workbench.action.editor.previousChange",
+    "when": "editorTextFocus && quickDiffDecorationCount != '0'"
+  }
 ]

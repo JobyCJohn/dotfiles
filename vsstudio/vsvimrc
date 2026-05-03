@@ -6,102 +6,176 @@ set relativenumber
 set scrolloff=8
 set smartcase
 
-" prevent x and del key overriding what's in the clipboard
-nnoremap <silent> x "_x
-nnoremap <silent> X "_x
+" =============================================================================
+" Clipboard-safe deletes
+" =============================================================================
+nnoremap <silent> x     "_x
+nnoremap <silent> X     "_X
 nnoremap <silent> <Del> "_x
+xnoremap <silent> p "_dP
 
+" =============================================================================
+" Editing ergonomics
+" =============================================================================
 " better indenting
 vnoremap <silent> < <gv
 vnoremap <silent> > >gv
 
-" down/up with cursor position in middle
-nnoremap <silent> n <C-d> <C-d>zz
-nnoremap <silent> n <C-u> <C-u>zz
+" keep cursor centered when paging
+nnoremap <silent> <C-d> <C-d>zz
+nnoremap <silent> <C-u> <C-u>zz
 
-" yank to the end of line
+" yank to end of line
 nnoremap <silent> Y y$
 
-" join without changing the cursor position
+" join without moving cursor
 nnoremap <silent> J mzJ`z
 
-" next search navigation without changing the cursor position
+" next search result keeps cursor centered + opens folds
 nnoremap <silent> n nzzzv
 nnoremap <silent> N Nzzzv
 
-" break undo sequence at punctuation marks
+" break undo sequence at punctuation
 inoremap <silent> , ,<C-g>u
 inoremap <silent> . .<C-g>u
 
 " clear highlights
 nnoremap <silent> <C-l> :nohl<CR>
 
-" visual mode "P" map, because it will never yank the pasted over text into the register
-xnoremap p P
-
-" visual studio mappings
+" =============================================================================
+" Navigation / VS tooling (mappings)
+" =============================================================================
+" tab navigation (like VS Code editor tabs)
 nnoremap <silent> ]b gt
 nnoremap <silent> [b gT
+
+" paste line above/below while preserving cursor
 nnoremap <silent> ]p m`o<ESC>p``
 nnoremap <silent> [p m`O<ESC>p``
+
+" insert blank line above/below (no insert mode)
 nnoremap <silent> ]<Space> m`o<Esc>``
 nnoremap <silent> [<Space> m`O<Esc>``
-nnoremap <silent> ]c :vsc Diff.NextDifference<CR>
-nnoremap <silent> [c :vsc Diff.PreviousDifference<CR>
+
+" diff navigation
+nnoremap <silent> ]c      :vsc Diff.NextDifference<CR>
+nnoremap <silent> [c      :vsc Diff.PreviousDifference<CR>
+nnoremap <silent> <A-Down> :vsc Diff.NextDifference<CR>
+nnoremap <silent> <A-Up>   :vsc Diff.PreviousDifference<CR>
+
+" diagnostics / issues
 nnoremap <silent> ]d :vsc Edit.GoToNextIssueInFile<CR>
 nnoremap <silent> [d :vsc Edit.GoToPreviousIssueInFile<CR>
-nnoremap <silent> ]m :vsc Edit.NextMethod<CR>
-nnoremap <silent> [m :vsc Edit.PreviousMethod<CR>
+
+" error navigation
 nnoremap <silent> ]e :vsc View.NextError<CR>
 nnoremap <silent> [e :vsc View.PreviousError<CR>
+nnoremap <silent> ]E :vsc View.NextError<CR>
+nnoremap <silent> [E :vsc View.PreviousError<CR>
+
+" method navigation
+nnoremap <silent> ]m :vsc Edit.NextMethod<CR>
+nnoremap <silent> [m :vsc Edit.PreviousMethod<CR>
+
+" spelling
 nnoremap <silent> ]s :vsc Tools.MovetoNextSpellingIssue<CR>
-nnoremap <silent> [s :vsc Tools.MovetoPirorSpellingIssue<CR>
+nnoremap <silent> [s :vsc Tools.MovetoPriorSpellingIssue<CR>
 
-nnoremap <A-j> :vsc Edit.MoveSelectedLinesDown<CR>
-nnoremap <A-k> :vsc Edit.MoveSelectedLinesUp<CR>
+" move lines (add visual-mode support + make silent)
+nnoremap <silent> <A-j> :vsc Edit.MoveSelectedLinesDown<CR>
+nnoremap <silent> <A-k> :vsc Edit.MoveSelectedLinesUp<CR>
+vnoremap <silent> <A-j> :vsc Edit.MoveSelectedLinesDown<CR>
+vnoremap <silent> <A-k> :vsc Edit.MoveSelectedLinesUp<CR>
 
-nnoremap gcc :vsc Edit.ToggleLineComment<CR>
-vnoremap gcc :vsc Edit.ToggleLineComment<CR>
-nnoremap gc :vsc Edit.ToggleBlockComment<CR>
-vnoremap gc :vsc Edit.ToggleBlockComment<CR>
+" commenting (make silent + keep both normal/visual)
+nnoremap <silent> gcc :vsc Edit.ToggleLineComment<CR>
+vnoremap <silent> gcc :vsc Edit.ToggleLineComment<CR>
+nnoremap <silent> gc  :vsc Edit.ToggleBlockComment<CR>
+vnoremap <silent> gc  :vsc Edit.ToggleBlockComment<CR>
 
-nnoremap g; :vsc Edit.GoToLastEditLocation<CR>
-nnoremap gb :vsc Edit.GoToBase<CR>
-nnoremap gd :vsc Edit.GoToDefinition<CR>
-nnoremap gi :vsc Edit.GoToImplementation<CR>
-nnoremap gp :vsc Edit.PeekDefinition<CR>
-nnoremap gr :vsc Edit.FindAllReferences<CR>
+" code navigation
+nnoremap <silent> g; :vsc Edit.GoToLastEditLocation<CR>
+nnoremap <silent> gb :vsc Edit.GoToBase<CR>
+nnoremap <silent> gd :vsc Edit.GoToDefinition<CR>
+nnoremap <silent> gI :vsc Edit.GoToImplementation<CR>
+nnoremap <silent> gp :vsc Edit.PeekDefinition<CR>
+nnoremap <silent> gr :vsc Edit.FindAllReferences<CR>
 
-" sets the leader key
+" VS navigation
+nnoremap <silent> <C-o> :vsc View.NavigateBackward<CR>
+nnoremap <silent> <C-i> :vsc View.NavigateForward<CR>
+
+" keep Ctrl-n/p for VS line down/up
+nnoremap <silent> <C-n> :vsc Edit.LineDown<CR>
+nnoremap <silent> <C-p> :vsc Edit.LineUp<CR>
+nnoremap <silent> <C-r> :vsc Edit.Redo<CR>
+
+" command palette/symbol
+nnoremap <silent> <C-S-t> :vsc Edit.GoToSymbol<CR>
+nnoremap <silent> <C-S-p> :vsc Window.QuickLaunch<CR>
+
+" quick code actions
+nnoremap <silent> <A-Enter> :vsc Edit.QuickActions<CR>
+
+" quick info
+nnoremap <silent> <S-k> :vsc Edit.QuickInfo<CR>
+
+" window management
+nnoremap <silent> <C-w>q :vsc Window.CloseDocumentWindow<CR>
+nnoremap <silent> <C-w>o :vsc File.CloseOtherTabs<CR>
+nnoremap <silent> <C-w>v :vsc Window.NewVerticalTabGroup<CR>
+nnoremap <silent> <C-w>s :vsc Window.NewHorizontalTabGroup<CR>
+
+" =============================================================================
+" Leader mappings
+" =============================================================================
 let mapleader=" "
-nnoremap <leader>e :vsc View.SolutionExplorer<CR>
-nnoremap <leader>c :vsc View.GitHub.Copilot.Chat<CR>
-nnoremap <leader>i :vsc Copilot.Open<CR>
-nnoremap <leader>v :vsc View.ViewCode<CR>
-nnoremap <leader>x :vsc ManageExtensions<CR>
-nnoremap <leader>cf :vsc Edit.FormatDocument<CR>
-nnoremap <leader>fn :vsc File.NewFile<CR>
-nnoremap <leader>fp :vsc View.Repository<CR>
-nnoremap <leader>ge :vsc View.GitWindow<CR>
-nnoremap <leader>gr :vsc View.GitRepositoryWindow<CR>
-nnoremap <leader>of :vsc File.OpenContainingFolder<CR>
-nnoremap <leader>oF :vsc File.OpenFolder<CR>
-nnoremap <leader>ss :vsc Edit.GotoToSymbol<CR>
-nnoremap <leader>sS :vsc Edit.GotoToAll<CR>
-nnoremap <leader>sw :vsc Edit.Find<CR>
-nnoremap <leader>sW :vsc Edit.FindInFiles<CR>
-nnoremap <leader>te :vsc View.Tfs.TeamExplorer<CR>
-nnoremap <leader>tt :vsc TestExplorer.ShowTestExplorer<CR>
 
-nnoremap <C-`> :vsc View.Terminal<CR>
-nnoremap <C-o> :vsc View.NavigateBackward<CR>
-nnoremap <C-i> :vsc View.NavigateForward<CR>
-nnoremap <C-n> :vsc Edit.LineDown<CR>
-nnoremap <C-p> :vsc Edit.LineUp<CR>
-nnoremap <C-r> :vsc Edit.Redo<CR>
-nnoremap <C-t> :vsc Edit.GotoToAll<CR>
-nnoremap <C-S-t> :vsc Window.QuickLaunch<CR>
-nnoremap <C-S-p> :vsc View.Repository<CR>
+" Explorer
+nnoremap <silent> <leader>e  :vsc View.SolutionExplorer<CR>
+nnoremap <silent> <leader>v  :vsc View.ViewCode<CR>
 
-nnoremap <C-w>q :vsc Window.CloseDocumentWindow<CR>
-nnoremap <C-w>o :vsc File.CloseOtherTabs<CR>
+" reveal current file in Solution Explorer
+nnoremap <silent> <leader>E  :vsc View.TrackActivityInSolutionExplorer<CR>
+
+" Copilot
+nnoremap <silent> <leader>c  :vsc View.GitHub.Copilot.Chat<CR>
+nnoremap <silent> <leader>i  :vsc Copilot.Open<CR>
+
+" Formatting
+nnoremap <silent> <leader>cf :vsc Edit.FormatDocument<CR>
+
+" Files
+nnoremap <silent> <leader>ff :vsc File.OpenFile<CR>
+nnoremap <silent> <leader>fr :vsc File.NavigateToRecentFile<CR>
+nnoremap <silent> <leader>of :vsc File.OpenContainingFolder<CR>
+nnoremap <silent> <leader>oF :vsc File.OpenFolder<CR>
+
+" Save
+nnoremap <silent> <leader>w  :vsc File.SaveSelectedItems<CR>
+nnoremap <silent> <leader>W  :vsc File.SaveAll<CR>
+
+" Search
+nnoremap <silent> <leader>sw :vsc Edit.Find<CR>
+nnoremap <silent> <leader>sW :vsc Edit.FindInFiles<CR>
+nnoremap <silent> <leader>ss :vsc Edit.GoToSymbol<CR>
+nnoremap <silent> <leader>sS :vsc Edit.GoToAll<CR>
+
+" Refactor
+nnoremap <silent> <leader>rn :vsc Refactor.Rename<CR>
+
+" Quick actions
+nnoremap <silent> <leader>ca :vsc Edit.QuickActions<CR>
+
+" Git
+nnoremap <silent> <leader>fp :vsc View.Repository<CR>
+nnoremap <silent> <leader>gg :vsc View.GitWindow<CR>
+nnoremap <silent> <leader>gr :vsc View.GitRepositoryWindow<CR>
+nnoremap <silent> <leader>gs :vsc View.GitChanges<CR>
+
+" Tools
+nnoremap <silent> <leader>x  :vsc ManageExtensions<CR>
+
+" Team/Test
+nnoremap <silent> <leader>te :vsc View.Tfs.TeamExplorer<CR>
+nnoremap <silent> <leader>tt :vsc TestExplorer.ShowTestExplorer<CR>

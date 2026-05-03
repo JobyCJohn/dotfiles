@@ -23,10 +23,10 @@ return {
 
 	default_prog = default_prog,
     font = wezterm.font_with_fallback {
-        "MesloLGM Nerd Font Mono",
+        "MesloLGL Nerd Font Mono",
         "Noto Sans Mono"
     },
-	font_size = 10.0,
+	font_size = 10,
 
 	initial_cols = 120,
 	initial_rows = 30,
@@ -38,16 +38,15 @@ return {
 	use_dead_keys = false,
 	send_composed_key_when_left_alt_is_pressed = false,
 	send_composed_key_when_right_alt_is_pressed = false,
-	disable_default_key_bindings = true,
+	-- disable_default_key_bindings = true,
 
-	cursor_blink_ease_in = "Constant",
 	cursor_blink_ease_out = "Constant",
 	default_cursor_style = "BlinkingBar",
 	force_reverse_video_cursor = true,
 
 	window_close_confirmation = "NeverPrompt",
-	window_background_opacity = 0.95,
-	window_padding = { left = 2, right = 2, top = 4, bottom = 4 },
+	window_background_opacity = 0.90,
+	window_padding = { left = 2, right = 2, top = 8, bottom = 32 },
 
 	leader = { key = "Space", mods = "CTRL", timeout_milliseconds = 1000 },
 	keys = {
@@ -75,7 +74,19 @@ return {
 		{ key = "k", mods = "CTRL|SHIFT", action = act({ AdjustPaneSize = { "Up", 2 } }) },
 		{ key = "l", mods = "CTRL|SHIFT", action = act({ AdjustPaneSize = { "Right", 2 } }) },
 
-		-- { key = "S", mods = "LEADER", action = wezterm.action({ EmitEvent = "save_session" }) },
+        -- { key = 'UpArrow', mods = 'SHIFT|CTRL', action = act.ActivatePaneDirection 'Up' },
+        -- { key = 'DownArrow', mods = 'SHIFT|CTRL', action = act.ActivatePaneDirection 'Down' },
+        -- { key = 'LeftArrow', mods = 'SHIFT|CTRL', action = act.ActivatePaneDirection 'Left' },
+        -- { key = 'RightArrow', mods = 'SHIFT|CTRL', action = act.ActivatePaneDirection 'Right' },
+
+        { key = '0', mods = 'CTRL', action = act.ResetFontSize },
+        { key = '+', mods = 'CTRL', action = act.IncreaseFontSize },
+        { key = '-', mods = 'CTRL', action = act.DecreaseFontSize },
+
+        { key = 'N', mods = 'CTRL', action = act.SpawnWindow },
+        { key = 'P', mods = 'CTRL', action = act.ActivateCommandPalette },
+
+        -- { key = "S", mods = "LEADER", action = wezterm.action({ EmitEvent = "save_session" }) },
 		-- { key = "L", mods = "LEADER", action = wezterm.action({ EmitEvent = "load_session" }) },
 		-- { key = "R", mods = "LEADER", action = wezterm.action({ EmitEvent = "restore_session" }) },
 	},
